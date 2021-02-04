@@ -17,7 +17,10 @@ const Button = ({ variant, title, onPress }) => {
                 alignItems: 'center'
             }}
         >
-            <Text style={{ color: variant === 'outlined' ? CONSTANT.App.colors.buttonColor : '#fff', fontSize: 20, }}>{title}</Text>
+            <Text style={{
+                color: variant === 'outlined' ? CONSTANT.App.colors.buttonColor : '#fff',
+                fontSize: 20, fontFamily: CONSTANT.App.fonts.DMSANSREGULAR
+            }}>{title}</Text>
         </TouchableOpacity>
     )
 }

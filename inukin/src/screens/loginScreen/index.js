@@ -122,13 +122,15 @@ const styles = StyleSheet.create({
     },
     haveAccount: {
         color: CONSTANT.App.colors.textColor,
-        fontSize: 16
+        fontSize: 16,
+        fontFamily: CONSTANT.App.fonts.DMSANSREGULAR
     },
     forgotpassword: {
         textAlign: 'right',
         color: CONSTANT.App.colors.buttonColor,
         fontSize: 17,
         fontWeight: '900',
+        fontFamily:  CONSTANT.App.fonts.DMSANSREGULAR
 
     }
 })

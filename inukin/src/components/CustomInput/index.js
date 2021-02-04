@@ -11,26 +11,22 @@ const CustomInput = ({
     onRightIconClick,
     errorMsg
 }) => {
-
-
     const [width, setWidth] = useState('')
-
     useEffect(() => {
-
     }, [])
 
     return (
         <>
-         {
+            {
                 errorMsg !== "" ?
-                    <Text style={{marginLeft:10,color:'red'}}>{errorMsg}</Text>
+                    <Text style={styles.errormsg}>{errorMsg}</Text>
                     : null
             }
             <View style={styles.root}>
 
                 {
                     leftIcon &&
-                    <View style={{ position: 'absolute', left: 10 }}>
+                    <View style={styles.leftIconstyle}>
                         <FeatherIcon name={leftIcon} size={20} color={CONSTANT.App.colors.placeholderTextColor} />
                     </View>
                 }
@@ -40,16 +36,13 @@ const CustomInput = ({
                     secureTextEntry={isSecure ? true : false}
                     placeholderTextColor={CONSTANT.App.colors.placeholderColor}
                     onChangeText={(value) => onTextChange(value)}
-                    style={{
-                        height: '100%',
-                        width: '100%',
-                        paddingLeft: leftIcon ? 30 : 10
-                    }}
+                    style={[styles.textInput,{paddingLeft: leftIcon ? 30 : 10}]}
+                    
                 />
 
                 {
                     rightIcon &&
-                    <TouchableOpacity onPress={onRightIconClick} style={{ position: 'absolute', right: 15 }}>
+                    <TouchableOpacity onPress={onRightIconClick} style={styles.rightIcon}>
                         <FeatherIcon name={rightIcon} size={20} color={CONSTANT.App.colors.placeholderColor} />
                     </TouchableOpacity>
                 }
@@ -57,7 +50,7 @@ const CustomInput = ({
 
 
             </View>
-           
+
         </>
     )
 }
@@ -73,7 +66,18 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         alignItems: 'center',
         marginBottom: 15
-    }
+    },
+    errormsg: {
+        fontFamily: CONSTANT.App.fonts.DMSANSREGULAR,
+        marginLeft: 10, color: 'red'
+    },
+    textInput: {
+        height: '100%',
+        width: '100%',
+        fontFamily: CONSTANT.App.fonts.DMSANSREGULAR,
+    },
+    leftIconstyle: { position: 'absolute', left: 10 },
+    rightIcon: { position: 'absolute', right: 15 }
 })
 
 

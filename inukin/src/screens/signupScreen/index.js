@@ -6,21 +6,17 @@ import AuthBox from '../../components/AuthBox';
 import Logo from '../../components/Logo';
 import Button from '../../components/Button';
 import { SignupApi } from '../../backend/ServiceApi'
+
 const SignupScreen = (props) => {
 
     const [name, setName] = useState('');
     const [errName, setErrName] = useState('');
-
     const [email, setEmail] = useState('');
     const [errEmail, setErrEmail] = useState('');
-
     const [password, setPassword] = useState('');
     const [errPassword, setErrPassword] = useState('');
-
     const [isSecure, setSecure] = useState(true);
-
     const onLogin = () => {
-
         props.navigation.navigate(CONSTANT.App.screenNames.login)
     }
 
@@ -110,7 +106,8 @@ const styles = StyleSheet.create({
     },
     haveAccount: {
         color: CONSTANT.App.colors.textColor,
-        fontSize: 16
+        fontSize: 16,
+        fontFamily: CONSTANT.App.fonts.DMSANSREGULAR
     }
 })
 

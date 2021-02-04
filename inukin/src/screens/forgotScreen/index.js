@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
 import CONSTANT from '../../constants';
 import CustomInput from '../../components/CustomInput';
@@ -7,8 +7,16 @@ import Logo from '../../components/Logo';
 import Button from '../../components/Button'
 const ForgotScreen = (props) => {
 
-
-
+    const [email, setEmail] = useState('')
+    const [otp, setOtp] = useState('')
+    const [errotp, setErrOtp] = useState('')
+    const [password, setPassword] = useState('')
+    const [cfmPassword, setCfmPassword] = useState('')
+    const [errpassword, setErrPassword] = useState('')
+    const [errcfmPassword, setErrCfmPassword] = useState('')
+    const [errEmail, setErrEmail] = useState('')
+    const [isSecurep, setSecurep] = useState(true);
+    const [isSecurec, setSecurec] = useState(true);
     const onLogin = () => {
 
         props.navigation.navigate(CONSTANT.App.screenNames.login)
@@ -18,10 +26,15 @@ const ForgotScreen = (props) => {
         <AuthBox>
             <Logo />
             <CustomInput
+
                 plcholder="Email or mobile phone"
+                onTextChange={(value) => { setEmail(value) }}
+                errorMsg={errEmail}
             />
             <CustomInput
                 plcholder="Enter OTP code"
+                onTextChange={(value) => { setOtp(value) }}
+                errorMsg={errotp}
             />
 
             <View style={[styles.signUpContainer, { marginTop: 0 }]}>
@@ -36,14 +49,21 @@ const ForgotScreen = (props) => {
             </View>
 
             <CustomInput
-                isSecure={true}
-                plcholder="New password"
-                rightIcon="eye-off"
+
+                isSecure={isSecurep}
+                plcholder="Password"
+                rightIcon={isSecurep ? "eye-off" : "eye"}
+                onTextChange={(value) => { setPassword(value) }}
+                onRightIconClick={() => { setSecurep(!isSecurep) }}
+                errorMsg={errpassword}
             />
             <CustomInput
-                isSecure={true}
-                plcholder="Confirm password"
-                rightIcon="eye-off"
+               isSecure={isSecurec}
+               plcholder="Confirm Password"
+               rightIcon={isSecurec ? "eye-off" : "eye"}
+               onTextChange={(value) => { setPassword(value) }}
+               onRightIconClick={() => { setSecurec(!isSecurec) }}
+               errorMsg={errcfmPassword}
             />
 
             <Button variant="filled" title="Submit" />
@@ -65,14 +85,16 @@ const styles = StyleSheet.create({
     },
     haveAccount: {
         color: CONSTANT.App.colors.textColor,
-        fontSize: 16
+        fontSize: 16,
+        fontFamily: CONSTANT.App.fonts.DMSANSREGULAR,
     },
     forgotpassword: {
         textAlign: 'right',
         color: CONSTANT.App.colors.buttonColor,
         fontSize: 17,
         fontWeight: '900',
-        textDecorationLine: 'underline'
+        textDecorationLine: 'underline',
+        fontFamily: CONSTANT.App.fonts.DMSANSREGULAR,
     }
 })
 
