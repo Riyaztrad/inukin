@@ -50,6 +50,13 @@ const CONSTANT = {
         stackNames: {
             DrawerStack: 'DrawerStack',
         },
+        staticImages: {
+            profile: require('../utility/images/profilepic.png'),
+            camera:require('../utility/images/camera.png')
+           // camera: require('../../../assets/camera.png'),
+           // appIcon: require('../../../assets/appIcon.png'),
+       },
+
         drawerMenu: {
             Home: 'Home',
             Dashboard: 'Dashboard',

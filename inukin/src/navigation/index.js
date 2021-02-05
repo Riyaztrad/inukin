@@ -43,7 +43,7 @@ function DrawerStack() {
 const Stack = createStackNavigator();
 function AppStackNavigator() {
     return (
-        <Stack.Navigator>
+        <Stack.Navigator headerMode="none">
             <Stack.Screen name="Home" component={DrawerStack} />
             {/* <Stack.Screen
                 component={LoginScreen}
