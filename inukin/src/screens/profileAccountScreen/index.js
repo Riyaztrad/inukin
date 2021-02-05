@@ -6,7 +6,8 @@ import ProfileHeader from '../../components/ProfileHeader';
 import ProfileContent from '../../components/ProfileContent';
 import CONSTANT from '../../constants';
 
-const ProfileScreen = ({ navigation }) => {
+const ProfileAccountScreen = ({ route, navigation }) => {
+    const { account } = route.params;
     const [search, setSearch] = useState('');
 
     const DATA = [
@@ -49,7 +50,7 @@ const ProfileScreen = ({ navigation }) => {
                     points={"500"}
                     rightBtn
                     isQty
-                    profile
+                    account
                     qty_photos={"128"}
                     qty_followers={"120"}
                     qty_following={"171"}
@@ -60,8 +61,8 @@ const ProfileScreen = ({ navigation }) => {
                 <View style={styles.horizontalBar} />
 
                 <ProfileContent
+                    account
                     navigation={navigation}
-                    profile
                     qty_followers={"200"}
                 />
 
@@ -88,4 +89,4 @@ const styles = StyleSheet.create({
 });
 
 
-export default ProfileScreen;
+export default ProfileAccountScreen;

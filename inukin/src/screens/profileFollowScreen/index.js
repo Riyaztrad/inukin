@@ -6,7 +6,9 @@ import ProfileHeader from '../../components/ProfileHeader';
 import ProfileContent from '../../components/ProfileContent';
 import CONSTANT from '../../constants';
 
-const ProfileScreen = ({ navigation }) => {
+const ProfileFollowScreen = ({ route, navigation }) => {
+    const { follow } = route.params;
+    console.log(follow)
     const [search, setSearch] = useState('');
 
     const DATA = [
@@ -49,7 +51,7 @@ const ProfileScreen = ({ navigation }) => {
                     points={"500"}
                     rightBtn
                     isQty
-                    profile
+                    follow
                     qty_photos={"128"}
                     qty_followers={"120"}
                     qty_following={"171"}
@@ -60,8 +62,8 @@ const ProfileScreen = ({ navigation }) => {
                 <View style={styles.horizontalBar} />
 
                 <ProfileContent
+                    follow
                     navigation={navigation}
-                    profile
                     qty_followers={"200"}
                 />
 
@@ -88,4 +90,4 @@ const styles = StyleSheet.create({
 });
 
 
-export default ProfileScreen;
+export default ProfileFollowScreen;

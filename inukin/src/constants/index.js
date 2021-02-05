@@ -4,7 +4,8 @@ const CONSTANT = {
         delayTime: 300,
         fonts: {
             DMSANSREGULAR: 'DMSans-Regular',
-            DMSANSBOLD: 'DMSans-Bold'
+            DMSANSBOLD: 'DMSans-Bold',
+            DMSANSMEDIUM: 'DMSans-Medium',
         },
         dimen: {
             buttonPadding: 15,
@@ -33,6 +34,34 @@ const CONSTANT = {
             midGrey: '#7f8387',
             borderColor: '#707070',
             mealTitleColor: '#212121',
+
+            //inukin color
+            i_red: '#F15223',
+            i_black: '#000000',
+            i_background: '#FFFFFF',
+            i_lightBlack: '#3B3B3B',
+            i_grey: '#F7F8FA',
+            i_lightGrey: '#A3A3A3',
+            i_superGrey: '#BFBFBF',
+            i_nanogrey: '#A1A1A1',
+            i_ultraLight: '#E8E9EB',
+            i_yellow: '#FEAF18',
+            i_white: '#FFFFFF',
+            i_solidblue: '#172B4D',
+            i_backgroundAccount: '#F9FAFC',
+            i_textGrey: '#B2B2B2',
+            i_textEdit: '#172B4D'
+        },
+        staticImages: {
+            avatar: require('../assets/icons/avatar.png'),
+            edit: require('../assets/icons/edit.png'),
+            star: require('../assets/icons/star.png'),
+            rahul: require('../assets/icons/rahul.png'),
+            maud: require('../assets/icons/maud.png'),
+            rachma: require('../assets/icons/rachma.png'),
+            annabelle: require('../assets/icons/annabelle.png'),
+            rightArrow: require('../assets/icons/rightarrow.png'),
+            message: require('../assets/icons/Message.png')
         },
         fontSize: {
             xSmall: 10,
@@ -77,6 +106,9 @@ const CONSTANT = {
             otp: 'otp',
             forgot: 'forgot',
             home: 'home',
+            profile: 'profile',
+            profileAccount: 'profileAccount',
+            profileFollow: 'profileFollow'
         },
 
     },
