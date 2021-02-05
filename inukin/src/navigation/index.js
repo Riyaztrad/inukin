@@ -9,7 +9,10 @@ import {
     OtpScreen,
     ForgotScreen,
     SignupScreen,
-    SplashScreen
+    SplashScreen,
+    ProfileScreen,
+    ProfileAccountScreen,
+    ProfileFollowScreen
 } from '../screens';
 
 
@@ -22,6 +25,10 @@ function TabStack() {
                 component={HomeScreen}
                 name='Home'
             />
+            {/* <Tab.Screen
+                component={ProfileScreen}
+                name='Profile'
+            /> */}
         </Tab.Navigator>
     );
 }
@@ -44,11 +51,24 @@ const Stack = createStackNavigator();
 function AppStackNavigator() {
     return (
         <Stack.Navigator>
-            <Stack.Screen name="Home" component={DrawerStack} />
-            {/* <Stack.Screen
-                component={LoginScreen}
-                name={CONSTANT.App.screenNames.login}
-            /> */}
+            <Stack.Screen
+                name="Home"
+                component={DrawerStack} />
+            <Stack.Screen
+                component={ProfileScreen}
+                name={CONSTANT.App.screenNames.profile}
+                initialParams={{ profile: true }}
+            />
+            <Stack.Screen
+                component={ProfileAccountScreen}
+                name={CONSTANT.App.screenNames.profileAccount}
+                initialParams={{ account: true }}
+            />
+            <Stack.Screen
+                component={ProfileFollowScreen}
+                name={CONSTANT.App.screenNames.profileFollow}
+                initialParams={{ follow: true }}
+            />
         </Stack.Navigator>
     )
 }

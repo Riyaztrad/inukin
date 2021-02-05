@@ -9,7 +9,8 @@ const CustomInput = ({
     isSecure,
     onTextChange,
     onRightIconClick,
-    errorMsg
+    errorMsg,
+    style
 }) => {
     const [width, setWidth] = useState('')
     useEffect(() => {
@@ -22,12 +23,12 @@ const CustomInput = ({
                     <Text style={styles.errormsg}>{errorMsg}</Text>
                     : null
             }
-            <View style={styles.root}>
+            <View style={[styles.root, style]}>
 
                 {
                     leftIcon &&
                     <View style={styles.leftIconstyle}>
-                        <FeatherIcon name={leftIcon} size={20} color={CONSTANT.App.colors.placeholderTextColor} />
+                        <FeatherIcon name={leftIcon} size={20} color={CONSTANT.App.colors.i_lightGrey} />
                     </View>
                 }
 
@@ -43,7 +44,7 @@ const CustomInput = ({
                 {
                     rightIcon &&
                     <TouchableOpacity onPress={onRightIconClick} style={styles.rightIcon}>
-                        <FeatherIcon name={rightIcon} size={20} color={CONSTANT.App.colors.placeholderColor} />
+                        <FeatherIcon name={rightIcon} size={20} color={CONSTANT.App.colors.i_lightGrey} />
                     </TouchableOpacity>
                 }
 
