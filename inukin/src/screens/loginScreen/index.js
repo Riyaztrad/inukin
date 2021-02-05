@@ -36,7 +36,7 @@ const LoginScreen = (props) => {
         dispatch(setUserData(response))
     }
 
-
+//naghma
     const onLogin = async () => {
         var isValid = []
         if (username === "") {
