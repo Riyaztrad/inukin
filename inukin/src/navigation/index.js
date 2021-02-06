@@ -1,7 +1,9 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { View, Text, TouchableOpacity, Image, FlatList } from 'react-native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { createDrawerNavigator } from '@react-navigation/drawer';
-import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+
 import CONSTANT from '../constants'
 import {
     LoginScreen,
@@ -12,33 +14,39 @@ import {
     SplashScreen,
     ProfileScreen,
     ProfileAccountScreen,
-    ProfileFollowScreen
+    ProfileFollowScreen,
+    EditScreen,
+    NotificationScreen,
+    ScoreScreen
 } from '../screens';
 
+import CustomTabBar from '../components/CustomTabBar';
 
 
-const Tab = createMaterialBottomTabNavigator();
-function TabStack() {
+const Tab = createBottomTabNavigator();
+
+function MyTabs() {
     return (
-        <Tab.Navigator>
+        <Tab.Navigator tabBar={props => <CustomTabBar {...props} />}>
             <Tab.Screen
+                name="home"
                 component={HomeScreen}
-                name='Home'
-            />
-            {/* <Tab.Screen
-                component={ProfileScreen}
-                name='Profile'
-            /> */}
+                options={{ tabBarIcon: () => (<Image  source={CONSTANT.App.staticImages.home} />) }} />
+            <Tab.Screen name="Scores" component={ScoreScreen} />
+            <Tab.Screen name="Edits" component={EditScreen} />
+            <Tab.Screen name="Bells" component={NotificationScreen} />
+            <Tab.Screen name="Profiles" component={ProfileScreen} />
         </Tab.Navigator>
     );
 }
+
 
 const Drawer = createDrawerNavigator();
 function DrawerStack() {
     return (
         <Drawer.Navigator>
             <Drawer.Screen
-                component={TabStack}
+                component={MyTabs}
                 name='TabStack'
             />
         </Drawer.Navigator>
@@ -51,10 +59,11 @@ const Stack = createStackNavigator();
 function AppStackNavigator() {
     return (
 
-        <Stack.Navigator>
+        <Stack.Navigator headerMode="none">
             <Stack.Screen
                 name="Home"
-                component={DrawerStack} />
+                component={DrawerStack}
+            />
             <Stack.Screen
                 component={ProfileScreen}
                 name={CONSTANT.App.screenNames.profile}
@@ -70,7 +79,22 @@ function AppStackNavigator() {
                 name={CONSTANT.App.screenNames.profileFollow}
                 initialParams={{ follow: true }}
             />
->>>>>>> azhar
+            <Stack.Screen
+                component={NotificationScreen}
+                name={CONSTANT.App.screenNames.notification}
+                initialParams={{ follow: true }}
+            />
+            <Stack.Screen
+                component={ScoreScreen}
+                name={CONSTANT.App.screenNames.score}
+                initialParams={{ follow: true }}
+            />
+            <Stack.Screen
+                component={EditScreen}
+                name={CONSTANT.App.screenNames.edit}
+                initialParams={{ follow: true }}
+            />
+
         </Stack.Navigator>
     )
 }
@@ -108,7 +132,7 @@ function SplashNavigator() {
 
 export {
     AuthNavigator,
-    TabStack,
+    //TabStack,
     AppStackNavigator,
     SplashNavigator
 }

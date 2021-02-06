@@ -1,3 +1,4 @@
+import { act } from 'react-test-renderer';
 import { LOGIN } from './actionType';
 
 
@@ -7,6 +8,7 @@ var initialState = {
 
 
 const loginReducer = (state = initialState, action) => {
+    
     switch (action.type) {
         case LOGIN:
             console.log("action", action)

@@ -1,15 +1,15 @@
 import React, { useState } from 'react';
 import { View, StyleSheet, Text, ScrollView, SafeAreaView, FlatList } from 'react-native';
-import { Avatar } from 'react-native-paper';
+
 
 import ProfileHeader from '../../components/ProfileHeader';
 import ProfileContent from '../../components/ProfileContent';
+import CustomHeader from '../../components/CustomHeader';
 import CONSTANT from '../../constants';
 
-const ProfileFollowScreen = ({ route, navigation }) => {
-    const { follow } = route.params;
-    console.log(follow)
-    const [search, setSearch] = useState('');
+const ProfileFollowScreen = ({  navigation }) => {
+
+
 
     const DATA = [
         {
@@ -44,6 +44,12 @@ const ProfileFollowScreen = ({ route, navigation }) => {
     return (
         <SafeAreaView>
             <ScrollView contentContainerStyle={styles.profile}>
+                <CustomHeader
+                    icon={CONSTANT.App.staticImages.back}
+                    navigation={navigation}
+                    onPress={() => { navigation.goBack() }}
+                    name={"Profile"}
+                />
                 <ProfileHeader
                     avatar={CONSTANT.App.staticImages.avatar}
                     name={"Manohar Negi"}

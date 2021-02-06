@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
 import { View, StyleSheet, Text, ScrollView, SafeAreaView, FlatList } from 'react-native';
-import { Avatar } from 'react-native-paper';
+
 
 import ProfileHeader from '../../components/ProfileHeader';
 import ProfileContent from '../../components/ProfileContent';
+import CustomHeader from '../../components/CustomHeader';   
 import CONSTANT from '../../constants';
 
-const ProfileAccountScreen = ({ route, navigation }) => {
-    const { account } = route.params;
+const ProfileAccountScreen = ({ navigation }) => {
     const [search, setSearch] = useState('');
 
     const DATA = [
@@ -43,6 +43,12 @@ const ProfileAccountScreen = ({ route, navigation }) => {
     return (
         <SafeAreaView>
             <ScrollView contentContainerStyle={styles.profile}>
+                <CustomHeader
+                    icon={CONSTANT.App.staticImages.back}
+                    navigation={navigation}
+                    onPress={() => { navigation.goBack() }}
+                    name={"Profile"}
+                />
                 <ProfileHeader
                     avatar={CONSTANT.App.staticImages.avatar}
                     name={"Manohar Negi"}

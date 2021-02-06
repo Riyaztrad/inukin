@@ -7,18 +7,18 @@ const Button = ({ variant, title, onPress, style, textStyle }) => {
         <TouchableOpacity
             onPress={onPress}
             style={[{
-                width: '100%',
-                backgroundColor: variant === 'filled' ? CONSTANT.App.colors.buttonColor : 'transparent',
+                // width: '100%',
+                backgroundColor: variant === 'filled' ? CONSTANT.App.colors.i_red : 'transparent',
                 borderRadius: 15,
                 borderWidth: variant === 'outlined' ? 1 : 0,
-                borderColor: variant === 'outlined' ? CONSTANT.App.colors.buttonColor : '',
+                borderColor: variant === 'outlined' ? CONSTANT.App.colors.i_red : '',
                 padding: 20,
                 justifyContent: 'center',
                 alignItems: 'center'
             }, style]}
         >
             <Text style={[{
-                color: variant === 'outlined' ? CONSTANT.App.colors.buttonColor : '#fff',
+                color: variant === 'outlined' ? CONSTANT.App.colors.i_red : '#fff',
                 fontSize: 20, fontFamily: CONSTANT.App.fonts.DMSANSREGULAR
             }, textStyle]}>{title}</Text>
         </TouchableOpacity>

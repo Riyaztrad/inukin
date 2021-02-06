@@ -7,6 +7,10 @@ import SplashScreen from './splashScreen';
 import ProfileScreen from './profileScreen';
 import ProfileFollowScreen from './profileFollowScreen';
 import ProfileAccountScreen from './profileAccountScreen';
+import NotificationScreen from './notificationScreen';
+import EditScreen from './editScreen';
+import ScoreScreen from './scoreScreen';
+
 export {
     LoginScreen,
     SignupScreen,
@@ -16,5 +20,8 @@ export {
     SplashScreen,
     ProfileScreen,
     ProfileFollowScreen,
-    ProfileAccountScreen
+    ProfileAccountScreen,
+    NotificationScreen,
+    EditScreen,
+    ScoreScreen
 };

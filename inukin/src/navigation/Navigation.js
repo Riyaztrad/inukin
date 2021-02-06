@@ -107,7 +107,7 @@ const Navigation = () => {
         <AuthContext.Provider value={authContext}>
             <NavigationContainer>
                 {
-                    !isAuth ? (
+                    isAuth ? (
                         <>
                             <AppStackNavigator />
                         </>

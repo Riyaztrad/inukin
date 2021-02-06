@@ -36,6 +36,9 @@ const CONSTANT = {
             mealTitleColor: '#212121',
 
             //inukin color
+
+            i_outline: '#999999',
+            i_inputBackground: '#F9FAFC',
             i_red: '#F15223',
             i_black: '#000000',
             i_background: '#FFFFFF',
@@ -50,9 +53,14 @@ const CONSTANT = {
             i_solidblue: '#172B4D',
             i_backgroundAccount: '#F9FAFC',
             i_textGrey: '#B2B2B2',
-            i_textEdit: '#172B4D'
+            i_textEdit: '#172B4D',
+            i_imageBack: '#0055AE',
+            i_time: '#7A869A',
         },
         staticImages: {
+            icon: require('../assets/icons/Icon.png'),
+            // camera: require('../assets/icons/camera.png'),
+            menu: require('../assets/icons/menu.png'),
             avatar: require('../assets/icons/avatar.png'),
             edit: require('../assets/icons/edit.png'),
             star: require('../assets/icons/star.png'),
@@ -61,7 +69,13 @@ const CONSTANT = {
             rachma: require('../assets/icons/rachma.png'),
             annabelle: require('../assets/icons/annabelle.png'),
             rightArrow: require('../assets/icons/rightarrow.png'),
-            message: require('../assets/icons/Message.png')
+            message: require('../assets/icons/Message.png'),
+            plus: require('../assets/icons/plus.png'),
+            bell: require('../assets/icons/bell.png'),
+            user: require('../assets/icons/User.png'),
+            image1: require('../assets/icons/Image.png'),
+            image2: require('../assets/icons/image2.png'),
+
         },
         fontSize: {
             xSmall: 10,
@@ -80,24 +94,32 @@ const CONSTANT = {
             DrawerStack: 'DrawerStack',
         },
         staticImages: {
-            profile: require('../utility/images/profilepic.png'),
-            camera:require('../utility/images/camera.png')
-           // camera: require('../../../assets/camera.png'),
-           // appIcon: require('../../../assets/appIcon.png'),
-       },
+          //  profile: require('../utility/images/profilepic.png'),
+           // camera: require('../utility/images/camera.png'),
 
-        drawerMenu: {
-            Home: 'Home',
-            Dashboard: 'Dashboard',
-            Deliveries: 'Deliveries',
-            DeliveryDetails: 'Delivery Details',
-            MyRatings: 'My Ratings',
-            Map: 'Map',
-            Settings: 'Settings',
-            Notification: 'Notifications',
-            Message: 'Messages',
-            AboutUs: 'About Us',
-            Logout: 'Log Out',
+            avatar: require('../assets/icons/avatar.png'),
+            edit: require('../assets/icons/edit.png'),
+            star: require('../assets/icons/star.png'),
+            rahul: require('../assets/icons/rahul.png'),
+            maud: require('../assets/icons/maud.png'),
+            rachma: require('../assets/icons/rachma.png'),
+            annabelle: require('../assets/icons/annabelle.png'),
+            rightArrow: require('../assets/icons/rightarrow.png'),
+            message: require('../assets/icons/Message.png'),
+            plus: require('../assets/icons/plus.png'),
+            user: require('../assets/icons/User.png'),
+            home: require('../assets/icons/home-f.png'),
+            bell: require('../assets/icons/bell.png'),
+            trophy: require('../assets/icons/trophy.png'),
+            back: require('../assets/icons/back.png'),
+        },
+
+        tabMenu: {
+            notification: 'notification',
+            score: 'score',
+            edit: 'edit',
+            homeTAb: 'home',
+            profile: 'profile',
         },
         screenNames: {
             splash: 'splash',
@@ -108,7 +130,10 @@ const CONSTANT = {
             home: 'home',
             profile: 'profile',
             profileAccount: 'profileAccount',
-            profileFollow: 'profileFollow'
+            profileFollow: 'profileFollow',
+            notification: 'notification',
+            score: 'score',
+            edit: 'edit'
         },
 
     },

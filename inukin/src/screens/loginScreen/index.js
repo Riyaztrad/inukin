@@ -36,8 +36,8 @@ const LoginScreen = (props) => {
         dispatch(setUserData(response))
     }
 
-//naghma
-//hello
+    //naghma
+    //hello
     const onLogin = async () => {
         var isValid = []
         if (username === "") {
@@ -59,10 +59,12 @@ const LoginScreen = (props) => {
                 email: username,
                 password: password
             }
+            dispatch(setUserData(data))
             var loginresult = await LoginApi(data);
             if (loginresult.token !== undefined) {
                 AsyncStorage.setItem("userInfo", JSON.stringify(loginresult))
-                dispatch(setUserData(loginresult));
+                // dispatch(setUserData(loginresult));
+                dispatch(setUserData({ name: 'abc' }))
                 setError("")
             } else {
                 setError("Invalid username or password")
@@ -131,7 +133,7 @@ const styles = StyleSheet.create({
         color: CONSTANT.App.colors.buttonColor,
         fontSize: 17,
         fontWeight: '900',
-        fontFamily:  CONSTANT.App.fonts.DMSANSREGULAR
+        fontFamily: CONSTANT.App.fonts.DMSANSREGULAR
 
     }
 })
