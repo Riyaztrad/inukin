@@ -9,12 +9,18 @@ const InviteFreindScreen=()=>{
         <ScrollView style={styles.container}>
             <View style={styles.upperdiv}>
                 <View style={styles.header}>
-<FontAwesomes name="angle-left" size={20} color={'#7A869A'} 
+                    <View style={{flex:1}}>
+                    <FontAwesomes name="angle-left" size={20} color={'#7A869A'} 
 />
-<View style={{justifyContent:'center',alignItems:'center'}}>
-<Text>Invite Friends</Text>
+     
+                    </View>
+
+<View style={{flex:1,marginRight:80}}>
+<Text style={{alignItems:'center', fontFamily:CONSTANT.App.fonts.DMSANSMEDIUM,fontSize:20}}>Invite Friends</Text>
 
 </View>
+
+
                 </View>
                 <View>
                     <View style={styles.outerDiv}>
@@ -68,7 +74,7 @@ const styles = StyleSheet.create({
     },
     upperdiv:{
 width:'100%',
-height:255,
+height:260,
 backgroundColor:'#fff',
 padding:20
 
@@ -76,10 +82,11 @@ padding:20
 
     },
     header:{
+        flex:1,
         flexDirection:'row',
-        justifyContent:'space-around',
+        justifyContent:'space-between',
         paddingLeft:10,
-        marginBottom:10,
+        marginBottom:30,
 
     
 
@@ -167,7 +174,7 @@ padding:20
     },
     footerbtn:{
         width:'100%',
-        height:60,
+        height:40,
         backgroundColor:'#F15223',
         borderRadius:30,
         justifyContent:'center',
