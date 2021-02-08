@@ -12,7 +12,9 @@ import {
     SplashScreen,
     ProfileScreen,
     ProfileAccountScreen,
-    ProfileFollowScreen
+    ProfileFollowScreen,
+    AddListScreen,
+    InviteFreindScreen
 } from '../screens';
 
 
@@ -51,7 +53,7 @@ const Stack = createStackNavigator();
 function AppStackNavigator() {
     return (
 
-        <Stack.Navigator>
+        <Stack.Navigator headerMode="none"  initialRouteName={CONSTANT.App.screenNames.friendInvite}>
             <Stack.Screen
                 name="Home"
                 component={DrawerStack} />
@@ -70,7 +72,20 @@ function AppStackNavigator() {
                 name={CONSTANT.App.screenNames.profileFollow}
                 initialParams={{ follow: true }}
             />
->>>>>>> azhar
+                        <Stack.Screen
+                component={AddListScreen}
+                name={CONSTANT.App.screenNames.addList}
+                initialParams={{ follow: true }}
+            />
+                                    <Stack.Screen
+                component={InviteFreindScreen}
+                name={CONSTANT.App.screenNames.friendInvite}
+                initialParams={{ follow: true }}
+            />
+
+
+
+{/* >>>>>>> azhar */}
         </Stack.Navigator>
     )
 }

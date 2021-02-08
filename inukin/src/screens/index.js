@@ -7,6 +7,9 @@ import SplashScreen from './splashScreen';
 import ProfileScreen from './profileScreen';
 import ProfileFollowScreen from './profileFollowScreen';
 import ProfileAccountScreen from './profileAccountScreen';
+import InviteFreindScreen from './inviteFriend'
+import AddListScreen from './addlist'
+
 export {
     LoginScreen,
     SignupScreen,
@@ -16,5 +19,7 @@ export {
     SplashScreen,
     ProfileScreen,
     ProfileFollowScreen,
-    ProfileAccountScreen
+    ProfileAccountScreen,
+    AddListScreen,
+    InviteFreindScreen
 };

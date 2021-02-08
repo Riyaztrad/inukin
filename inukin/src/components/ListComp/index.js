@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { TextInput, View, StyleSheet, Text, TouchableOpacity,FlatList } from 'react-native';
+import { TextInput, View, StyleSheet, Text, TouchableOpacity,FlatList,Image } from 'react-native';
 import {DATA} from '../../constants/data'
 
 function  ListComponent(props) {
@@ -11,11 +11,15 @@ function  ListComponent(props) {
 <FlatList 
 data={DATA.product}
 renderItem={(item)=>{
-    // console.log('item',item)
+    console.log('item',item)
+    console.log('item1111',item.item)
+    console.log("iteminmmmmm",item.item.image)
     return(
-        <View style={styles.flatlist}>
-            <Text style={[styles.text,{marginTop:10}]}>Abstact Photo</Text>
-            <Text style={[styles.text,{fontSize:13}]}>{item.item.title}</Text>
+        // <View style={styles.flatlist}>
+            <View style={{marginLeft:12}}>
+
+<Image source={item.item.image}   style={{width:250,height:150,borderRadius:20}} />
+
         </View>
     )
 }}
@@ -31,12 +35,11 @@ showsHorizontalScrollIndicator={false}
 
 const styles = StyleSheet.create({
     flatlist:{
-width:230,
+width:100,
         height:150,
-        backgroundColor:'#70b5cf',
         marginLeft:10,
 
-        borderRadius:20,
+        // borderRadius:20,
 
 
     },

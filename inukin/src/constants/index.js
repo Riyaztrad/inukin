@@ -81,7 +81,15 @@ const CONSTANT = {
         },
         staticImages: {
             profile: require('../utility/images/profilepic.png'),
-            camera:require('../utility/images/camera.png')
+            camera:require('../utility/images/camera.png'),
+            banana:require('../utility/images/banana.png'),
+            book:require('../utility/images/book.png'),
+            donut:require('../utility/images/donut.png'),
+            glass:require('../utility/images/glass.png'),
+            orange:require('../utility/images/orange.png'),
+            speakar:require('../utility/images/speakar.png'),
+            invitefriend:require('../utility/images/invitefriend.png')
+
            // camera: require('../../../assets/camera.png'),
            // appIcon: require('../../../assets/appIcon.png'),
        },
@@ -108,7 +116,9 @@ const CONSTANT = {
             home: 'home',
             profile: 'profile',
             profileAccount: 'profileAccount',
-            profileFollow: 'profileFollow'
+            profileFollow: 'profileFollow',
+            addList:'addList',
+            friendInvite:'friendInvite'
         },
 
     },
