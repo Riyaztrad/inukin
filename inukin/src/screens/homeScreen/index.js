@@ -1,251 +1,272 @@
-import AsyncStorage from '@react-native-community/async-storage';
-import React, { Component } from 'react';
-import { View, Text, TouchableOpacity, StyleSheet, TextInput,
-    Image ,FlatList,ScrollView} from 'react-native';
-import { useDispatch, batch } from 'react-redux';
+import React, { useState, useContext } from 'react';
+import {
+    View, StyleSheet, ScrollView, Text, FlatList, Image,
+    Alert, Modal, Pressable
+} from 'react-native';
+import { Avatar } from 'react-native-paper';
+import CustomHeader from '../../components/CustomHeader';
+import Button from '../../components/Button';
 import CONSTANT from '../../constants';
-import { setUserData } from '../loginScreen/action';
-import AuthBox from '../../components/AuthBox';
-import CustomInput from '../../components/CustomInput';
-import { ListComponent } from '../../components/ListComp'
-import {SearchBtn} from '../../components/SearchBtn'
+import ProfileList from '../../components/ProfileList';
+import { TouchableOpacity } from 'react-native-gesture-handler';
+import AsyncStorage from '@react-native-community/async-storage';
+import { useDispatch, batch } from 'react-redux';
+import { setUserData } from '../loginScreen/action'
+import { useLinkProps } from '@react-navigation/native';
+import { AuthContext } from '../../context/authContext'
+const DATA = [
+    {
+        name: 'first',
+        icon: require('../../assets/icons/Image.png')
+    },
+    {
+        name: 'Second',
+        icon: require('../../assets/icons/image2.png')
+    },
+    {
+        name: 'Third',
+        icon: require('../../assets/icons/image2.png')
+    },
+    {
+        name: 'Fouth',
+        icon: require('../../assets/icons/image2.png')
+    }
+]
 
-//////////////////////////// hhhhhhhhhhhhhhhhhhhhh
-import { FeatherIcon,
-    EvilIcon,
-    AntDesigns,
-    MaterialCommunityIcon,
-    FontAwesome
- } from '../../constants/Icons'
-import { useState } from 'react';
-import Button from '../../components/Button'
+const SCROLLBUTTON = [
+    {
+        name: 'All',
+        variant: 'filled'
 
-const HomeScreen = (props) => {
-    console.log("staticImages",CONSTANT.App.staticImages.profile)
-
-    console.log("rrrrrrrrrrrrrrrrrrrr")
-    const profile=CONSTANT.App.staticImages.profile
-    const camera=CONSTANT.App.staticImages.camera
-    const [data, setdata] = useState("")
-
-    const [ishorizontal,setishorizontal]=useState(true)
-
-    const data1 = [
-        {
-            title: 'All',
-            value: 'value',
-            selected:true,
-            iswidth:true
-        },
-        {
-            title: 'Landscap',
-            value: 'value',
-            selected:false,
-            iswidth:false
-        },
-        {
-            title: 'potrat',
-            value: 'value',
-            selected:false,
-            iswidth:false
-        },
-        {
-            title: 'Animal',
-            value: 'value',
-            selected:false,
-            iswidth:false
-        },
-        {
-            title: 'Urban',
-            value: 'value',
-            selected:false,
-            iswidth:false
-        }
+    },
+    {
+        name: 'Landscape',
+        variant: 'outlined'
+    },
+    {
+        name: 'Portrait',
+        variant: 'outlined'
+    },
+    {
+        name: 'Animal',
+        variant: 'outlined'
+    },
+    {
+        name: 'Urban',
+        variant: 'outlined'
+    }
+]
 
 
 
-    ]
-    return (
 
-        <ScrollView style={styles.container}>
-                         <SearchBtn 
-            name="search"
-            menu="menu"
-            />
-            <View style={{width:'100%'}}>
-                <Text style={styles.uppertxt}>Photo Contest</Text>
-            </View>
-            <View style={{ width: '100%' }}>
-                <ListComponent />
+const HomeScreen = ({ navigation }) => {
 
+    const [modalVisible, setModalVisible] = useState(false);
+    const { logout } = useContext(AuthContext)
+    const dispatch = useDispatch()
 
-            </View >
-
-               <View style={styles.buttonView}>
-                <FlatList
-
-                    data={data1}
-
-                    renderItem={({ item }) => {
-                        console.log("hiiiiii")
-                        console.log("itemmmm", item)
-                        console.log('itessssss',item.title)
-                        return (
-                            <View style={{marginRight:5}}>
-                               <Button title={item.title} variant={item.selected?"filled":"outlined"}
-
-                               
-                               />
-                               <View>
-
-                                   </View>
-
-</View>
-                               
-                        )
+    const logout1 = async () => {
+        logout()
+        // await AsyncStorage.clear();
+        // dispatch(setUserData(null));
+        // navigation.navigate(CONSTANT.App.screenNames.login)
+    }
+    const renderPhotoItem = ({ item }) => {
+        return (
+            <View style={{ height: 136, width: 237, marginHorizontal: 10 }}>
+                <Image source={item.icon}
+                    style={{
+                        width: '100%',
+                        height: '100%'
                     }}
-                    keyExtractor={(item) => item.id}
-                    horizontal={ishorizontal}
-                    showsHorizontalScrollIndicator={false}
-
-
                 />
             </View>
+        );
+    }
+
+    return (
+        <View style={styles.home}>
+            <CustomHeader
+                home
+                icon={require('../../assets/icons/menu.png')}
+                navigation={navigation}
+                onPress={() => { }}
+                name={"Profile"}
+            // style={{marginLeft:40,width:100}}
+            />
+            <ScrollView>
+                <View style={{
+                    width: '80%',
+                    marginTop: 10,
+                    marginLeft: 12,
+                    flexDirection: 'row',
+                    justifyContent: 'space-between',
+                    alignItems: 'center'
+                }}>
+                    <Text style={{
+                        color: CONSTANT.App.colors.i_solidblue,
+                        fontFamily: CONSTANT.App.fonts.DMSANSBOLD,
+                        fontSize: 14
+                    }}>Photo Contest</Text>
+                    <TouchableOpacity onPress={() => logout1()}>
+                        <Text>Logout</Text>
+                    </TouchableOpacity>
+                </View>
+
+                {/* <TouchableOpacity style={{ width: '100%', paddingTop: 20 }}
+                onPress={()=>navigation.navigate('Detail')}> */}
+                <FlatList
+                    style={{ width: '100%', paddingTop: 10 }}
+                    data={DATA}
+                    keyExtractor={(item, index) => index.toString()}
+                    horizontal
+                    showsHorizontalScrollIndicator={false}
+                    renderItem={renderPhotoItem}
+                />
+                {/* </TouchableOpacity> */}
+
+                <View style={{
+                    width: '100%',
+                    height: 60,
+                    marginTop: 20,
+                    backgroundColor: CONSTANT.App.colors.i_inputBackground,
+                    paddingTop: 15,
+
+                }}>
+
+                    <FlatList
+                        horizontal
+                        showsHorizontalScrollIndicator={false}
+                        data={SCROLLBUTTON}
+                        key={(item) => { item.name }}
+                        renderItem={(itemData) => {
+                            return (
+                                <Button
+                                    onPress={() => { }}
+                                    variant={itemData.item.variant}
+                                    title={itemData.item.name}
+                                    style={{
+                                        height: 28,
+                                        marginHorizontal: 10,
+                                        paddingHorizontal: 10,
+                                        paddingVertical: 10,
+                                        borderRadius: 8,
+                                        marginLeft: 10,
+                                        justifyContent: 'center',
+                                        alignItem: 'center',
+                                        borderColor: itemData.item.variant === 'outlined' ? CONSTANT.App.colors.i_outline : ''
+                                    }}
+                                    textStyle={{
+                                        fontFamily: CONSTANT.App.fonts.DMSANSREGULAR,
+                                        fontSize: 12,
+                                        color: itemData.item.variant === 'outlined' ? CONSTANT.App.colors.i_outline : CONSTANT.App.colors.i_background
+                                    }}
+                                />
+                            );
+                        }}
+                    />
+
+                </View>
+
+                <ProfileList />
+
+                <View style={styles.centeredView}>
+                    <Modal
+                        animationType="slide"
+                        transparent={true}
+                        visible={modalVisible}
+                        onRequestClose={() => {
+                            Alert.alert("Modal has been closed.");
+                            setModalVisible(!modalVisible);
+                        }}
+                    >
+                        <View style={styles.centeredView}>
+                            <ScrollView style={styles.modalView}>
+                                <Text style={styles.modalText}>Hello World!</Text>
+                                <Pressable
+                                    style={[styles.button, styles.buttonClose]}
+                                    onPress={() => setModalVisible(!modalVisible)}
+                                ><Text>Filter</Text>
+                                    <Text>texyug</Text>
+                                    <Text style={styles.textStyle}>Hide Modal</Text>
+                                </Pressable>
+                            </ScrollView>
+                        </View>
+                    </Modal>
+                    {/* <Pressable
+                        style={[styles.button, styles.buttonOpen]}
+                        onPress={() => setModalVisible(true)}
+                    >
+                        <Text style={styles.textStyle}>Show Modal</Text>
+                    </Pressable> */}
+                </View>
 
 
-                       <View  style={styles.profilecontain}>
-                           <View style={{flexDirection:'row',justifyContent:'flex-start',alignItems:'center'}}>
+            </ScrollView>
 
-                           <Image source={profile} style={{width:50,height:50,borderRadius:150}} />
-<View style={{marginLeft:10}}>
-<Text style={styles.profoletxt1}>Ian payan</Text>
-<Text style={styles.profoletxt2}>5 minutes ago</Text>
-
-</View>
-
-                           </View>
-<FeatherIcon name="more-horizontal" size={25} color={'#7A869A'} />
-           </View>
-            <Text>Striking imagery that features one primary color.</Text>
-            <View style={styles.footer}>
-               <Image source={camera} style={{width:150,height:80,borderRadius:10
-                ,position:'absolute',left:100,top:25
-            }} />
-            <View style={styles.bottom}>
-            {/* <AntDesigns name="heart" color={CONSTANT.App.colors.buttonColor} size={20} />
-<FeatherIcon name="message-circle" size={20} color={'grey'} />
-<FontAwesome name="share" size={20} color={'#7A869A'}/> */}
-
-            </View>
-
-            
-            </View>
-
-            <Text style={{        fontFamily:  CONSTANT.App.fonts.DMSANSREGULAR
-}}>hjjjkj</Text>
-            <Text style={{fontSize:40}}>hjjjkj</Text>
-            <Text style={{fontSize:40}}>hjjjkj</Text>
-            <Text style={{fontSize:40}}>hjjjkj</Text>
-            <Text style={{fontSize:40}}>hjjjkj</Text>
-            <Text style={{fontSize:40}}>hjjjkj</Text>
-            <Text style={{fontSize:40}}>hjjj  </Text>      
-                <Text style={{fontSize:40}}>hjjjkjkj</Text>
-            <Text style={{fontSize:40}}>hjjjkj</Text>
-            <Text style={{fontSize:40}}>hjjjkj</Text>
-
-
-
-        </ScrollView>
-
-            
-
-    )
-};
-
+        </View>
+    );
+}
 
 const styles = StyleSheet.create({
-    container: {
-        backgroundColor:'#fff',
-        width:'100%',
-        height:'100%'
+    home: {
+        width: '100%',
+        height: '100%',
+        backgroundColor: CONSTANT.App.colors.i_background,
+        justifyContent: 'center'
     },
-    searchView: {
-        flexDirection: 'row',
-        justifyContent: 'space-between',
-        alignItems: 'center',
-        margin:10,
-
-
+    centeredView: {
+        flex: 1,
+        justifyContent: "center",
+        alignItems: "center",
+        marginTop: 22
     },
-    uppertxt:{
-        marginLeft:20,fontSize:15,
-        fontFamily:  CONSTANT.App.fonts.DMSANSREGULAR,
-        
-        margin:12
-
-
+    modalView: {
+        position: 'absolute',
+        bottom: -20,
+        width: '100%',
+        height: 400,
+        margin: 20,
+        backgroundColor: "white",
+        borderRadius: 20,
+        padding: 35,
+        // alignItems: "center",
+        shadowColor: "#000",
+        shadowOffset: {
+            width: 0,
+            height: 2
+        },
+        shadowOpacity: 0.25,
+        shadowRadius: 4,
+        elevation: 5
     },
-
-    buttonView:{
-        width:'100%',
-        height:80,
-        paddingRight:10,
-        backgroundColor:'#E5E5E5',
-        // marginLeft:12,
-        marginTop:18,
-        marginBottom:18
-
+    button: {
+        borderRadius: 20,
+        padding: 10,
+        elevation: 2
     },
-    profoletxt1:{
-        fontSize:18,
-        color:'#172B4D',
-        fontFamily:  CONSTANT.App.fonts.DMSANSREGULAR,
-
+    buttonOpen: {
+        backgroundColor: "#F194FF",
     },
-    profoletxt2:{
-        fontSize:13,
-        color:'#7A869A',
-        fontFamily:  CONSTANT.App.fonts.DMSANSREGULAR,
-
-
+    buttonClose: {
+        backgroundColor: "#2196F3",
     },
-    txtStcyle: {
-        width: '80%',
-        borderBottomWidth: 1,
-        height: 50
+    textStyle: {
+        color: "white",
+        fontWeight: "bold",
+        textAlign: "center"
     },
-    profilecontain:{
-        width:'100%',
-        backgroundColor:'#fff',
-        flexDirection:'row',
-        justifyContent:'space-between',
-        alignItems:'center',
-        paddingLeft:15,
-        paddingRight:15
-    },
-    footer:{
-        backgroundColor:'rgb(51, 103, 214)',
-        width:'100%',
-        height:140
-    },
-    bottom:{
-        width:250,
-        position:'absolute',
-        top:120,left:60,flexDirection:'row',
-            justifyContent:'space-between',height:50,
-            borderRadius:10,alignItems:'center',
-            backgroundColor:'#fff',
-            paddingLeft:15,
-            paddingRight:15,
-zIndex:3,
-elevation: 3,
-
-
-
-
+    modalText: {
+        marginBottom: 15,
+        textAlign: "center"
     }
-})
+
+});
+
 export default HomeScreen;
+
+
 
 
 

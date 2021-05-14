@@ -7,8 +7,12 @@ import SplashScreen from './splashScreen';
 import ProfileScreen from './profileScreen';
 import ProfileFollowScreen from './profileFollowScreen';
 import ProfileAccountScreen from './profileAccountScreen';
-import InviteFreindScreen from './inviteFriend'
-import AddListScreen from './addlist'
+import NotificationScreen from './notificationScreen';
+import EditScreen from './editScreen';
+import ScoreScreen from './scoreScreen';
+import SubmitPhotoScreen from './submitPhoto';
+import VoteFhotoScreen from './votePhoto';
+import DetailScreen from './Detail'
 
 export {
     LoginScreen,
@@ -20,6 +24,10 @@ export {
     ProfileScreen,
     ProfileFollowScreen,
     ProfileAccountScreen,
-    AddListScreen,
-    InviteFreindScreen
+    NotificationScreen,
+    EditScreen,
+    ScoreScreen,
+    SubmitPhotoScreen,
+    VoteFhotoScreen,
+    DetailScreen
 };

@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { View } from 'react-native'
+import { View, Text } from 'react-native'
 import AuthBox from '../../components/AuthBox';
 import AsyncStorage from '@react-native-community/async-storage';
 import Logo from '../../components/Logo'
@@ -20,7 +20,7 @@ const SplashScreen = () => {
     })
 
     const getUserData = async () => {
-        const userdata = await AsyncStorage.getItem("userInfo")
+        const userdata = await AsyncStorage.getItem("user")
 
         const response = JSON.parse(userdata)
         console.log("response", response)
@@ -33,9 +33,9 @@ const SplashScreen = () => {
     }
 
     return (
-        <AuthBox>
-            <Logo />
-        </AuthBox>
+        <View style={{height:'100%' , width:'100%',justifyContent:'center',alignItems:'center'}}>
+            <Logo splash />
+        </View>
     )
 }
 

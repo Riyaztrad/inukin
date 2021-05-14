@@ -1,4 +1,4 @@
-import CONSTANT from '../constants'
+
 export const DATA={
     "product":[
        {
@@ -23,51 +23,5 @@ export const DATA={
        }
    
    
-   ],
-
-   "list":[
-       {
-           "id":"6",
-           "image":require("../utility/images/banana.png")
-
-
-       },
-       {
-        "id":"7",
-        "image":require("../utility/images/book.png")
-
-
-    },
-    {
-        "id":"7",
-        "image":require("../utility/images/donut.png")
-
-
-    },
-    
-    {
-        "id":"7",
-        "image":require("../utility/images/glass.png")
-
-
-    },
-    
-    {
-        "id":"7",
-        "image":require("../utility/images/orange.png")
-
-
-    },
-    
-    {
-        "id":"7",
-        "image":require("../utility/images/speakar.png")
-
-
-    },
-    
-
-    
-
    ]
    }

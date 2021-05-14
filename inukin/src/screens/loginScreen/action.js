@@ -6,3 +6,4 @@ export const setUserData = data => {
         payload: data,
     };
 };
+

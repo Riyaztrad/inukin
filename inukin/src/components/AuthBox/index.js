@@ -15,7 +15,7 @@ export default AuthBox
 
 const styles = StyleSheet.create({
     background: {
-        backgroundColor: CONSTANT.App.colors.backgroundColor,
+        backgroundColor: CONSTANT.App.colors.i_background,
         justifyContent: 'center',
         alignItems: 'center',
         height: '100%'

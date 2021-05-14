@@ -1,54 +1,32 @@
-import React, { useState, useEffect } from 'react';
-import { TextInput, View, StyleSheet, Text, TouchableOpacity,FlatList,Image } from 'react-native';
-import {DATA} from '../../constants/data'
+import React from 'react'
+import {View,Text,StyleSheet,FlatList,Image} from 'react-native'
 
-function  ListComponent(props) {
 
-    const [isHorizontal,setIsHorizontal]=useState(true)
+const ListComponent=(props)=>{
     return(
-
-<>
+        <>
 <FlatList 
-data={DATA.product}
-renderItem={(item)=>{
-    console.log('item',item)
-    console.log('item1111',item.item)
-    console.log("iteminmmmmm",item.item.image)
+
+data={props.data}
+renderItem={({item})=>{
     return(
-        // <View style={styles.flatlist}>
-            <View style={{marginLeft:12}}>
+        <View>
+            {/* <Image source={item.image} style={{width:183,height:252,marginRight:10,borderTopLeftRadius:25,
+            borderTopRightRadius:15,borderBottomRightRadius:15}} /> */}
+            <Image source={item.image} style={{width:183,height:252,borderRadius:22,marginRight:10}}/>
 
-<Image source={item.item.image}   style={{width:250,height:150,borderRadius:20}} />
-
-        </View>
+            {/* </View> */}
+            </View>
     )
 }}
-keyExtractor={item=>item.id}
-horizontal={isHorizontal}
-showsHorizontalScrollIndicator={false}
 
+keyExtractor={(item,index)=>index.toString()}
+horizontal
+showsHorizontalScrollIndicator={false}
 />
-</>
+
+        </>
     )
-    
 }
 
-const styles = StyleSheet.create({
-    flatlist:{
-width:100,
-        height:150,
-        marginLeft:10,
-
-        // borderRadius:20,
-
-
-    },
-    text:{
-        color:'white',
-        fontSize:20,
-        marginLeft:10,
-        fontWeight:'600',
-        // marginTop:15
-    }
-})
 export {ListComponent}

@@ -10,20 +10,22 @@ const CustomInput = ({
     onTextChange,
     onRightIconClick,
     errorMsg,
-    style
+    value,
+    style,
+    textStyle,
+    maxLengths,
+    keyboardTypes
+
 }) => {
     const [width, setWidth] = useState('')
     useEffect(() => {
     }, [])
 
     return (
-        <>
-            {
-                errorMsg !== "" ?
-                    <Text style={styles.errormsg}>{errorMsg}</Text>
-                    : null
-            }
-            <View style={[styles.root, style]}>
+
+        <View style={[styles.root, style]}>
+
+            <View style={styles.textContainer}>
 
                 {
                     leftIcon &&
@@ -34,11 +36,14 @@ const CustomInput = ({
 
                 <TextInput
                     placeholder={plcholder}
+                    maxLength={maxLengths}
+                    keyboardType={keyboardTypes}
+                    value={value}
                     secureTextEntry={isSecure ? true : false}
-                    placeholderTextColor={CONSTANT.App.colors.placeholderColor}
+                    placeholderTextColor={CONSTANT.App.colors.i_superGrey}
                     onChangeText={(value) => onTextChange(value)}
-                    style={[styles.textInput,{paddingLeft: leftIcon ? 30 : 10}]}
-                    
+                    style={[styles.textInput, { paddingLeft: leftIcon ? 30 : 10 ,color:'#000'}, textStyle]}
+
                 />
 
                 {
@@ -48,34 +53,80 @@ const CustomInput = ({
                     </TouchableOpacity>
                 }
 
-
-
             </View>
 
-        </>
+        </View>
+
+        // <View.n>
+        //     {
+        //         errorMsg !== "" ?
+        //             <Text style={styles.errormsg}>{errorMsg}</Text>
+        //             : null
+        //     }
+        //     <View style={[styles.root, style]}>
+        //         <View>
+
+        //         </View>
+
+        //         {
+        //             leftIcon &&
+        //             <View style={styles.leftIconstyle}>
+        //                 <FeatherIcon name={leftIcon} size={20} color={CONSTANT.App.colors.i_lightGrey} />
+        //             </View>
+        //         }
+
+        //         <TextInput
+        //             placeholder={plcholder}
+        //             secureTextEntry={isSecure ? true : false}
+        //             placeholderTextColor={CONSTANT.App.colors.i_superGrey}
+        //             onChangeText={(value) => onTextChange(value)}
+        //             style={[styles.textInput, { paddingLeft: leftIcon ? 30 : 10 }, textStyle]}
+
+        //         />
+
+        //         {
+        //             rightIcon &&
+        //             <TouchableOpacity onPress={onRightIconClick} style={styles.rightIcon}>
+        //                 <FeatherIcon name={rightIcon} size={20} color={CONSTANT.App.colors.i_lightGrey} />
+        //             </TouchableOpacity>
+        //         }
+
+
+
+        //     </View>
+
+        // </View>
     )
 }
 
 
 const styles = StyleSheet.create({
     root: {
-        backgroundColor: CONSTANT.App.colors.inputBackground,
-        height: 60,
-        padding: 5,
-        borderRadius: 15,
         width: '100%',
-        flexDirection: 'row',
+        alignItems: 'center'
+    },
+    textContainer: {
+        width: "100%",
+        backgroundColor: CONSTANT.App.colors.i_backgroundAccount,
         alignItems: 'center',
-        marginBottom: 15
+        justifyContent: 'center',
+        paddingLeft: 20,
+        borderRadius: 8
     },
     errormsg: {
         fontFamily: CONSTANT.App.fonts.DMSANSREGULAR,
-        marginLeft: 10, color: 'red'
+        marginLeft: 10,
+        color: 'red'
     },
+
     textInput: {
-        height: '100%',
-        width: '100%',
+        width: 315,
+        height: 44,
+
         fontFamily: CONSTANT.App.fonts.DMSANSREGULAR,
+        fontSize: 14,
+        color: CONSTANT.App.colors.i_superGrey,
+
     },
     leftIconstyle: { position: 'absolute', left: 10 },
     rightIcon: { position: 'absolute', right: 15 }
